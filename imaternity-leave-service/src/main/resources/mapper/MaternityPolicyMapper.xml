@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iabc.springdemo.maternityleave.mapper.MaternityPolicyMapper">
+
+    <resultMap id="MaternityPolicyResultMap" type="com.iabc.springdemo.maternityleave.entity.MaternityPolicy">
+        <id property="id" column="id" />
+        <result property="city" column="region" />
+        <result property="leaveType" column="leave_type" />
+        <result property="conditionKey" column="condition_key" />
+        <result property="conditionValue" column="condition_value" />
+        <result property="days" column="days" />
+        <result property="extendHoliday" column="extend_holiday" />
+        <result property="policyText" column="policy_text" />
+        <result property="embedding" column="embedding" typeHandler="com.iabc.springdemo.maternityleave.handler.DoubleArrayTypeHandler" />
+    </resultMap>
+
+    <select id="findSimilarPolicies" resultType="com.iabc.springdemo.maternityleave.entity.MaternityPolicy">
+        SELECT *
+        FROM maternity_policy
+        ORDER BY <![CDATA[embedding <-> CAST(#{embedding} AS vector)]]>
+        LIMIT #{limit}
+    </select>
+
+</mapper>

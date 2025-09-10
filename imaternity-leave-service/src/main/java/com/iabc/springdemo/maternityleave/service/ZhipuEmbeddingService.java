@@ -18,7 +18,7 @@ public class ZhipuEmbeddingService {
     @Value("${zhipuai.embedding.url}")
     private String embeddingUrl;
 
-    @Value("${zhipuai.embedding.model:embedding-3}")
+    @Value("${zhipuai.embedding.model:embedding-2}")
     private String embeddingModel;
 
     private final WebClient webClient;
@@ -42,6 +42,7 @@ public class ZhipuEmbeddingService {
     public List<float[]> generateEmbeddings(List<String> texts) {
         // 准备请求体 - 智普AI的请求格式
         Map<String, Object> requestBody = new HashMap<>();
+        embeddingModel = "embedding-2";
         requestBody.put("model", embeddingModel);
         requestBody.put("input", texts);
 

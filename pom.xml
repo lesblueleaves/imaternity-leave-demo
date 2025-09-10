@@ -30,8 +30,8 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-zhipuai-spring-boot-starter</artifactId>
             <version>1.0.0-M6</version>
-
         </dependency>
+
     </dependencies>
 
     <build>

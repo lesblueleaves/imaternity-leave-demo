@@ -19,9 +19,9 @@ public class EmbeddingRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // 单文本嵌入
-        float[] embedding = zhipuEmbeddingService.generateEmbedding("张三小姐请产假");
-        System.out.println(embedding);
-        System.out.println("嵌入维度: " + embedding.length);
+//        // 单文本嵌入
+//        float[] embedding = zhipuEmbeddingService.generateEmbedding("张三小姐请产假");
+//        System.out.println(embedding);
+//        System.out.println("嵌入维度: " + embedding.length);
     }
 }

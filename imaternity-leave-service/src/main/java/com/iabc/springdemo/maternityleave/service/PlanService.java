@@ -16,7 +16,11 @@ public class PlanService {
     private BigModelService bigModelService;
 
     public String plan(String question) {
+
+        // step1 get rag
         List<MaternityPolicy> list = maternityLeaveRagService.queryMaternityPolicy(question);
+
+        // step2 func call
         String resp = calculateLeaveDays(list.get(0).getPolicyText(), question);
         return resp;
     }
@@ -25,16 +29,19 @@ public class PlanService {
         String prompt2 = """
                 已知政策规则：
                 %s
-                
+
                 用户问题：
                 %s
-                
-                请从政策规则中提取员工应享受的产假天数，
-                然后调用工具函数计算请假结束日期，最终输出：
-                【产假开始日期】【总天数】和【产假结束日期】即可。
+
+                请从政策规则中提取员工应享受的产假天数，然后
+                1. 调用工具函数计算请假结束日期，
+                2. 调用工具根据政府发放金额，生育津贴，产前12个月的月平均工资，计算补差
+
+                最终输出：
+                【产假开始日期】【总天数】和【产假结束日期】【补差金额】即可。
                 """.formatted(policy, userQuery);
         String resp = "";
-        String days = bigModelService.callZhiPuBigModel(prompt2, userQuery);
+        String days = bigModelService.callBigModel(prompt2, userQuery);
         resp = days;
         return resp;
     }

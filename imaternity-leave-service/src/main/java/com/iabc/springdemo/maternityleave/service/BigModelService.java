@@ -61,7 +61,8 @@ public class BigModelService {
         List<ChatMessage> messages = Lists.newArrayList(
                 ChatMessage.builder()
                         .role(ChatMessageRole.SYSTEM.value())
-                        .content("你是企业人事助手，请严格按照政策规则计算产假天数，并调用函数返回结束日期。")
+//                        .content("你是企业人事助手，请严格按照政策规则计算产假天数，并调用函数返回结束日期。")
+                        .content(prompt)
                         .build(),
                 ChatMessage.builder()
                         .role(ChatMessageRole.USER.value())

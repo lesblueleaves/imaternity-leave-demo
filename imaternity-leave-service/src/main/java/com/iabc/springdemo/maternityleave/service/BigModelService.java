@@ -29,8 +29,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class BigModelService {
 
-    private final ChatClient chatClient;
-
     private final ZhipuAiClient zhipuAiClient;
 
     @Autowired
@@ -121,15 +119,6 @@ public class BigModelService {
                         // 发送请求
                         ChatCompletionResponse secresponse = zhipuAiClient.chat().createChatCompletion(seqRequest);
                         String finalAnswer = secresponse.getData().getChoices().get(0).getMessage().getContent().toString();
-
-//                        if (secresponse.isSuccess()) {
-//                            Object reply = secresponse.getData().getChoices().get(0).getMessage().getContent();
-//                            System.out.println("AI 回复: " + reply);
-//                            resp = reply.toString();
-//                        } else {
-//                            System.err.println("错误: " + response.getMsg());
-//                            resp = response.getMsg();
-//                        }
                         System.out.println("最终回答: " + finalAnswer);
                         return finalAnswer;
                     }

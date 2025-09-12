@@ -26,11 +26,11 @@ public class PlanService {
         List<MaternityPolicy> list = maternityLeaveRagService.queryMaternityPolicy(question);
 
         // step2 func call
-        String resp = calculateLeaveDays(list.get(0).getPolicyText(), question);
+        String resp = doCalculate(list.get(0).getPolicyText(), question);
         return resp;
     }
 
-    public String calculateLeaveDays(String policy, String userQuery) {
+    public String doCalculate(String policy, String userQuery) {
         String prompt2 = """
                 已知政策规则：
                 %s

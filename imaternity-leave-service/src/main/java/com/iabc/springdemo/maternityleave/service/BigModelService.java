@@ -40,6 +40,13 @@ public class BigModelService {
     @Autowired
     private AllowanceTool allowanceTool;
 
+    /**
+     * 调用智普大模型
+     *
+     * @param prompt 提示词
+     * @param query  用户问题
+     * @return 答案
+     */
     public String callBigModel(String prompt, String query) {
         List<ChatMessage> messages = Lists.newArrayList(
                 ChatMessage.builder()
@@ -124,6 +131,10 @@ public class BigModelService {
     }
 
 
+    /**
+     * 构建func list
+     * @return func列表
+     */
     private List<ChatTool> buildChatTools(){
         // 产假结束时间Func tool
         Map<String, ChatFunctionParameterProperty> properties = new HashMap<>();

@@ -15,6 +15,11 @@ public class PlanService {
     @Autowired
     private BigModelService bigModelService;
 
+    /**
+     * 对于用户问题做规划
+     * @param question 用户问题
+     * @return 问题的回答
+     */
     public String plan(String question) {
 
         // step1 get rag

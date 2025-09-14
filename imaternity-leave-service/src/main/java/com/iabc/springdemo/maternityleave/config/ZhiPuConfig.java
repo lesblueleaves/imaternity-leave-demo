@@ -11,7 +11,7 @@ public class ZhiPuConfig {
     @Bean
     public ZhipuAiClient zhipuAiClient(OpenAiChatModel chatModel) {
         ZhipuAiClient client = ZhipuAiClient.builder()
-                .apiKey("495d20c9a893486299b7203ca958c0f6.RSjfVZ178fTg7orj")
+                .apiKey("")
                 .build();
         return client;
     }
